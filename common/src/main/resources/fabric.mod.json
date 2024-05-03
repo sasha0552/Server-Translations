@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "id": "server_translations_api",
+  "id": "server_translations",
   "version": "${version}",
-  "name": "Server Translations API",
+  "name": "Server Translations",
   "description": "",
   "authors": [
     "CatCore", "Gegy", "Patbox"
@@ -15,8 +15,16 @@
   "environment": "*",
   "entrypoints": {
     "main": [
+      "fr.catcore.server.translations.ServerTranslationsInitializer",
       "xyz.nucleoid.server.translations.impl.ServerTranslations::INSTANCE"
     ]
+  },
+  "custom": {
+    "modmenu": {
+      "badges": [
+        "library"
+      ]
+    }
   },
   "depends": {
     "minecraft": ">=1.19.4-",
@@ -24,6 +32,7 @@
     "fabric-resource-loader-v0": "*"
   },
   "mixins": [
+    "server_translations.mixin.json",
     "server_translations_api.mixin.json"
   ]
 }
