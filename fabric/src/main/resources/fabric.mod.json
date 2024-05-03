@@ -15,8 +15,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "fr.catcore.server.translations.ServerTranslationsInitializer",
-      "xyz.nucleoid.server.translations.impl.ServerTranslations::INSTANCE"
+      "org.sasha0552.server_translations.fabric.ServerTranslationsFabric"
     ]
   },
   "custom": {
@@ -27,9 +26,10 @@
     }
   },
   "depends": {
-    "minecraft": ">=1.19.4-",
-    "fabricloader": ">=0.14.14",
-    "fabric-resource-loader-v0": "*"
+    "architectury": ">=9.2.14",
+    "fabric": "*",
+    "minecraft": ">=1.20.1",
+    "packet_tweaker": "*"
   },
   "mixins": [
     "server_translations.mixin.json",

@@ -2,7 +2,7 @@ package fr.catcore.server.translations.config;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import net.fabricmc.loader.api.FabricLoader;
+import dev.architectury.platform.Platform;
 
 import java.io.File;
 import java.io.FileReader;
@@ -13,7 +13,7 @@ public class ConfigManager {
 
     private static Config config;
 
-    private static final File configFile = new File(FabricLoader.getInstance().getConfigDir().toFile(), "translated_server.json");
+    private static final File configFile = new File(Platform.getConfigFolder().toFile(), "translated_server.json");
 
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 

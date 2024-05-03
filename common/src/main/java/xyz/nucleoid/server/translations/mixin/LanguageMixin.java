@@ -1,8 +1,8 @@
 package xyz.nucleoid.server.translations.mixin;
 
+import dev.architectury.platform.Platform;
+import dev.architectury.utils.Env;
 import xyz.nucleoid.server.translations.impl.language.SystemDelegatedLanguage;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.util.Language;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -21,9 +21,12 @@ public class LanguageMixin {
         instance = new SystemDelegatedLanguage(instance);
     }
 
-    @Environment(EnvType.SERVER)
     @ModifyVariable(method = "setInstance", at = @At("HEAD"))
     private static Language stapi$modifyLanguage(Language language) {
-        return new SystemDelegatedLanguage(language);
+        if (Platform.getEnvironment() == Env.SERVER) {
+            return new SystemDelegatedLanguage(language);
+        } else {
+            return language;
+        }
     }
 }

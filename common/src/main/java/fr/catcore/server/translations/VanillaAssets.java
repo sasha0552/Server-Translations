@@ -4,7 +4,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.MinecraftVersion;
 
 import java.io.BufferedReader;
@@ -86,7 +85,8 @@ public final class VanillaAssets {
                         return new URL(version.get("url").getAsString());
                     }
                 } catch (NoClassDefFoundError error) {
-                    if (version.get("id").getAsString().equals(FabricLoader.getInstance().getModContainer("minecraft").get().getMetadata().getVersion().getFriendlyString())) {
+                    // FIXME
+                    if (version.get("id").getAsString().equals("1.20.1")) {
                         return new URL(version.get("url").getAsString());
                     }
                 }

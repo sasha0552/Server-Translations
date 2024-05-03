@@ -5,13 +5,9 @@ import com.mojang.logging.LogUtils;
 import xyz.nucleoid.server.translations.api.LocalizationTarget;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectRBTreeMap;
-import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
-import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.minecraft.resource.ResourceManager;
-import net.minecraft.resource.ResourceType;
+import net.minecraft.resource.ResourceReloader;
 import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
 import net.minecraft.util.profiler.Profiler;
 import org.jetbrains.annotations.NotNull;
@@ -27,7 +23,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import java.util.function.Supplier;
 
-public final class ServerTranslations implements IdentifiableResourceReloadListener, ModInitializer {
+public final class ServerTranslations implements ResourceReloader {
     public static final String ID = "server_translations_api";
     public static final Logger LOGGER = LogUtils.getLogger();
 
@@ -169,22 +165,10 @@ public final class ServerTranslations implements IdentifiableResourceReloadListe
                 });
     }
 
-    @Override
-    public String getName() {
-        return IdentifiableResourceReloadListener.super.getName();
-    }
-
     public String getCodeAlias(String code) {
         return CODE_ALIAS.getOrDefault(code, code);
     }
 
-    @Override
     public void onInitialize() {
-        ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(ServerTranslations.INSTANCE);
-    }
-
-    @Override
-    public Identifier getFabricId() {
-        return new Identifier(ID, "translations");
     }
 }

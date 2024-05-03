@@ -1,6 +1,6 @@
 package fr.catcore.server.translations.mixin;
 
-import net.fabricmc.loader.api.FabricLoader;
+import dev.architectury.platform.Platform;
 import net.minecraft.server.dedicated.MinecraftDedicatedServer;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
@@ -37,7 +37,7 @@ public class MixinMinecraftDedicatedServer {
 
     @ModifyArg(method = "setupServer", at = @At(value = "INVOKE", target = "Lorg/slf4j/Logger;info(Ljava/lang/String;Ljava/lang/Object;)V", ordinal = 3, remap = false), index = 0)
     private String translated_done(String string, Object p0) {
-        if (!FabricLoader.getInstance().isDevelopmentEnvironment()) {
+        if (!Platform.isDevelopmentEnvironment()) {
             return Text.translatable("text.translated_server.done", p0).getString();
         } else return string;
     }

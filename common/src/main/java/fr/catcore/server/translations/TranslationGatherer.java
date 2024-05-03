@@ -8,10 +8,6 @@ import xyz.nucleoid.server.translations.impl.ServerTranslations;
 import xyz.nucleoid.server.translations.impl.language.LanguageReader;
 import xyz.nucleoid.server.translations.api.language.ServerLanguageDefinition;
 import xyz.nucleoid.server.translations.impl.language.TranslationMap;
-import net.fabricmc.loader.api.FabricLoader;
-import net.fabricmc.loader.api.ModContainer;
-import net.fabricmc.loader.api.SemanticVersion;
-import net.fabricmc.loader.api.VersionParsingException;
 import net.minecraft.util.Language;
 
 import java.io.BufferedReader;
@@ -52,10 +48,7 @@ public class TranslationGatherer {
 
     private static TranslationMap loadVanillaLanguage(VanillaAssets assets, ServerLanguageDefinition language) {
         try {
-            ModContainer vanilla = FabricLoader.getInstance().getModContainer("minecraft").get();
-            SemanticVersion minecraftVersion = SemanticVersion.parse(vanilla.getMetadata().getVersion().getFriendlyString());
-
-            if (minecraftVersion.compareTo(SemanticVersion.parse("1.13-Snapshot.17.48.a")) >= 0) {
+            if (true) {
                 InputStream stream;
                 if (ServerLanguageDefinition.DEFAULT.equals(language)) {
                     stream = Language.class.getResourceAsStream("/assets/minecraft/lang/en_us.json");
@@ -71,7 +64,7 @@ public class TranslationGatherer {
             } else {
                 throw new IllegalArgumentException("Lauguage file uses legacy format!");
             }
-        } catch (VersionParsingException | IOException e) {
+        } catch (IOException e) {
             ServerTranslations.LOGGER.warn("Failed to load vanilla language", e);
             return null;
         }

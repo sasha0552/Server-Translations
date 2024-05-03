@@ -1,0 +1,40 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+issueTrackerURL = "https://github.com/sasha0552/Server-Translations/issues"
+license = "MIT"
+
+[[mods]]
+modId = "server_translations"
+version = "${version}"
+displayName = "Server Translations"
+authors = "CatCore, Gegy, Patbox, sasha0552"
+description = '''
+'''
+
+[[dependencies.server_translations]]
+modId = "architectury"
+mandatory = true
+versionRange = "[9.1.14,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.server_translations]]
+modId = "forge"
+mandatory = true
+versionRange = "[47,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.server_translations]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.server_translations]]
+modId = "packet_tweaker"
+mandatory = true
+versionRange = "[0,)"
+ordering = "NONE"
+side = "BOTH"

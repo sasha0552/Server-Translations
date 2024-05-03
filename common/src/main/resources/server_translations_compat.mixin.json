@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "org.sasha0552.server_translations.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "MixinSimpleResourceReload"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
